@@ -1,9 +1,7 @@
-/**
- * ARUNAGIRI S. PORTFOLIO
- * Main Client-Side JS
- */
+console.log("js/main.js: Script file loaded and parsed successfully.");
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("js/main.js: DOMContentLoaded event fired. Initializing main UI logic.");
   // Global State
   let skillsData = [];
   let projectsData = [];

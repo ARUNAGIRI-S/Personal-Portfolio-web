@@ -1,9 +1,7 @@
-/**
- * ARUNAGIRI S. PORTFOLIO
- * Admin Dashboard Control JS
- */
+console.log("js/admin.js: Script file loaded and parsed successfully.");
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("js/admin.js: DOMContentLoaded event fired. Initializing admin panel logic.");
   // Select DOM Elements
   const loginOverlay = document.getElementById('adminLoginOverlay');
   const dashboardLayout = document.getElementById('adminDashboardLayout');
