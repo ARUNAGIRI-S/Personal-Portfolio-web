@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Arunagiri S. Portfolio</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet (Shared with landing page) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-theme admin-body">
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Admin Login Overlay -->
+  <div class="admin-login-overlay" id="adminLoginOverlay">
+    <div class="login-card glass-card">
+      <div class="login-header text-center">
+        <h1 class="tech-text">&lt;AS / Admin&gt;</h1>
+        <p class="text-muted">Enter administrative credentials to gain access.</p>
+      </div>
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="adminPasswordInput">Security Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input type="password" id="adminPasswordInput" placeholder="••••••••" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-glow">
+          <span>Decrypt & Authorize</span>
+          <i class="fa-solid fa-key"></i>
+        </button>
+        <p class="login-error-msg text-center" id="loginError"></p>
+        <div class="back-link-wrapper text-center">
+          <a href="/" class="back-home-link"><i class="fa-solid fa-chevron-left"></i> Return to Site</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard Main Layout -->
+  <div class="admin-layout" id="adminDashboardLayout" style="display: none;">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <span class="tech-text">AS.CONTROL</span>
+      </div>
+      <div class="sidebar-user">
+        <div class="user-avatar"><i class="fa-solid fa-user-gear"></i></div>
+        <div class="user-info">
+          <h4>Arunagiri S</h4>
+          <span>Administrator</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <button class="sidebar-nav-btn active" data-target="overview-panel">
+              <i class="fa-solid fa-chart-line"></i> Overview
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-nav-btn" data-target="inbox-panel">
+              <i class="fa-solid fa-envelope"></i> Message Inbox
+              <span class="badge badge-danger" id="inboxUnreadBadge" style="display:none;">0</span>
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-nav-btn" data-target="projects-panel">
+              <i class="fa-solid fa-cubes"></i> Projects
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-nav-btn" data-target="certs-panel">
+              <i class="fa-solid fa-award"></i> Certifications
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-nav-btn" data-target="profile-panel">
+              <i class="fa-solid fa-user-pen"></i> Edit Profile
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn btn-secondary btn-block logout-btn" id="logoutBtn">
+          <span>Logout</span>
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="admin-main">
+      
+      <!-- Top navbar -->
+      <header class="admin-topbar">
+        <button class="mobile-sidebar-toggle" id="mobileSidebarToggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h2 class="topbar-title" id="adminTopbarTitle">Overview Dashboard</h2>
+        <div class="topbar-actions">
+          <a href="/" target="_blank" class="btn btn-secondary btn-sm" title="View Live Website">
+            <span class="btn-text">View Site</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- Panel Container -->
+      <div class="admin-panel-container">
+        
+        <!-- ================= OVERVIEW PANEL ================= -->
+        <section class="admin-panel active" id="overview-panel">
+          <div class="overview-stats-grid">
+            <div class="stat-card glass-card">
+              <div class="stat-card-icon text-cyan"><i class="fa-solid fa-inbox"></i></div>
+              <div class="stat-card-details">
+                <h3 id="statTotalMsgs">0</h3>
+                <p>Total Messages</p>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-card-icon text-purple"><i class="fa-solid fa-envelope-open-text"></i></div>
+              <div class="stat-card-details">
+                <h3 id="statUnreadMsgs" class="text-danger">0</h3>
+                <p>Unread Messages</p>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-card-icon text-blue"><i class="fa-solid fa-laptop-code"></i></div>
+              <div class="stat-card-details">
+                <h3 id="statProjects">0</h3>
+                <p>Projects Hosted</p>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-card-icon text-accent"><i class="fa-solid fa-medal"></i></div>
+              <div class="stat-card-details">
+                <h3 id="statCertifications">0</h3>
+                <p>Certificates Registered</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-content-card glass-card margin-top">
+            <h3 class="card-heading"><i class="fa-solid fa-terminal text-cyan"></i> Database Quick Links & State</h3>
+            <p class="text-muted">The system is running on Vercel Serverless Functions connected directly to MongoDB Atlas. Verify that environment variables match the production configurations.</p>
+            <div class="status-indicator-wrapper">
+              <span class="status-indicator online"></span>
+              <span class="status-indicator-text">Backend Status: Connected to Atlas Cluster</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= INBOX PANEL ================= -->
+        <section class="admin-panel" id="inbox-panel">
+          <div class="admin-content-card glass-card">
+            <div class="panel-header-actions">
+              <h3 class="card-heading">Received Form Submissions</h3>
+              <button class="btn btn-secondary btn-sm refresh-btn" id="refreshInboxBtn"><i class="fa-solid fa-rotate"></i> Refresh</button>
+            </div>
+            <div class="table-responsive margin-top">
+              <table class="admin-table" id="inboxTable">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Received Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="6" class="text-center">Loading inbox messages...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PROJECTS PANEL ================= -->
+        <section class="admin-panel" id="projects-panel">
+          <div class="admin-content-card glass-card">
+            <div class="panel-header-actions">
+              <h3 class="card-heading">Manage Portfolio Projects</h3>
+              <button class="btn btn-primary btn-sm" id="addNewProjectBtn"><i class="fa-solid fa-plus"></i> Add Project</button>
+            </div>
+            <div class="table-responsive margin-top">
+              <table class="admin-table" id="projectsTable">
+                <thead>
+                  <tr>
+                    <th>Order</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Tags</th>
+                    <th>Links</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="6" class="text-center">Loading projects data...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CERTIFICATIONS PANEL ================= -->
+        <section class="admin-panel" id="certs-panel">
+          <div class="admin-content-card glass-card">
+            <div class="panel-header-actions">
+              <h3 class="card-heading">Manage Certifications</h3>
+              <button class="btn btn-primary btn-sm" id="addNewCertBtn"><i class="fa-solid fa-plus"></i> Add Certificate</button>
+            </div>
+            <div class="table-responsive margin-top">
+              <table class="admin-table" id="certsTable">
+                <thead>
+                  <tr>
+                    <th>Order</th>
+                    <th>Title</th>
+                    <th>Issuer</th>
+                    <th>Issue Date</th>
+                    <th>Credential Link</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="6" class="text-center">Loading certificates data...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PROFILE PANEL ================= -->
+        <section class="admin-panel" id="profile-panel">
+          <div class="admin-content-card glass-card">
+            <h3 class="card-heading">Update Profile Settings</h3>
+            <form id="profileForm" class="admin-form margin-top">
+              <div class="form-row">
+                <div class="form-group col-6">
+                  <label for="profName">Name</label>
+                  <input type="text" id="profName" required>
+                </div>
+                <div class="form-group col-6">
+                  <label for="profCgpa">Current CGPA</label>
+                  <input type="text" id="profCgpa" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="profTitle">Role / Title</label>
+                <input type="text" id="profTitle" required>
+              </div>
+              <div class="form-group">
+                <label for="profAbout">Biography / About text</label>
+                <textarea id="profAbout" rows="4" required></textarea>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group col-4">
+                  <label for="profGithub">GitHub Link</label>
+                  <input type="url" id="profGithub">
+                </div>
+                <div class="form-group col-4">
+                  <label for="profLinkedin">LinkedIn Link</label>
+                  <input type="url" id="profLinkedin">
+                </div>
+                <div class="form-group col-4">
+                  <label for="profEmail">Public Email</label>
+                  <input type="email" id="profEmail">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="profResume">Resume URL</label>
+                <input type="text" id="profResume" placeholder="e.g. /assets/resume.pdf or Google Drive link">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-3">
+                  <label for="counterProjVal">Projects Finished Counter</label>
+                  <input type="number" id="counterProjVal">
+                </div>
+                <div class="form-group col-3">
+                  <label for="counterCertVal">Certs Earned Counter</label>
+                  <input type="number" id="counterCertVal">
+                </div>
+                <div class="form-group col-3">
+                  <label for="counterWorkVal">Workshops Counter</label>
+                  <input type="number" id="counterWorkVal">
+                </div>
+                <div class="form-group col-3">
+                  <label for="counterHackVal">Hackathons Counter</label>
+                  <input type="number" id="counterHackVal">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-glow margin-top">
+                <span>Save Profile Changes</span>
+                <i class="fa-solid fa-floppy-disk"></i>
+              </button>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Project Form Modal Overlay -->
+  <div class="admin-modal-overlay" id="projectModal" style="display: none;">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <h3 id="projectModalTitle">Add Project</h3>
+        <button class="modal-close-btn" id="closeProjModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="projectForm" class="admin-form">
+        <input type="hidden" id="projId">
+        <div class="form-group">
+          <label for="projTitle">Title</label>
+          <input type="text" id="projTitle" required placeholder="e.g. Smart Transport System">
+        </div>
+        <div class="form-group">
+          <label for="projDesc">Short Description</label>
+          <input type="text" id="projDesc" required placeholder="Brief single-sentence explanation">
+        </div>
+        <div class="form-group">
+          <label for="projDetails">Details (One bullet per line)</label>
+          <textarea id="projDetails" rows="3" placeholder="Real-time tracking&#10;Firebase integration&#10;Flutter application"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="projTags">Tags (Comma separated)</label>
+          <input type="text" id="projTags" placeholder="IoT, Firebase, Flutter, ESP32">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <label for="projGithub">GitHub URL</label>
+            <input type="url" id="projGithub" placeholder="https://github.com/...">
+          </div>
+          <div class="form-group col-6">
+            <label xfor="projLive">Live Demo URL</label>
+            <input type="url" id="projLive" placeholder="https://...">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-8">
+            <label for="projImage">Project Image (URL / path)</label>
+            <input type="text" id="projImage" placeholder="/images/projects/transport.jpg">
+          </div>
+          <div class="form-group col-4">
+            <label for="projOrder">Display Order (Ascending)</label>
+            <input type="number" id="projOrder" value="0">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block margin-top">Save Project</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Certification Form Modal Overlay -->
+  <div class="admin-modal-overlay" id="certModal" style="display: none;">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <h3 id="certModalTitle">Add Certificate</h3>
+        <button class="modal-close-btn" id="closeCertModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="certForm" class="admin-form">
+        <input type="hidden" id="certId">
+        <div class="form-group">
+          <label for="certTitle">Certificate Title</label>
+          <input type="text" id="certTitle" required placeholder="e.g. IoT and Smart Home Applications">
+        </div>
+        <div class="form-group">
+          <label for="certIssuer">Issuing Body</label>
+          <input type="text" id="certIssuer" required placeholder="e.g. Oracle, Coursera, NPTEL">
+        </div>
+        <div class="form-group">
+          <label for="certCredUrl">Credential URL</label>
+          <input type="url" id="certCredUrl" placeholder="https://...">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <label for="certDate">Issue Date (e.g. Year-Month)</label>
+            <input type="text" id="certDate" placeholder="2025-05">
+          </div>
+          <div class="form-group col-6">
+            <label for="certOrder">Display Order</label>
+            <input type="number" id="certOrder" value="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="certImage">Badge / Certificate Image URL</label>
+          <input type="text" id="certImage" placeholder="/images/certs/iot.jpg">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block margin-top">Save Certificate</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- View Message Modal Overlay -->
+  <div class="admin-modal-overlay" id="viewMessageModal" style="display: none;">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <h3>Message Details</h3>
+        <button class="modal-close-btn" id="closeMsgModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="message-modal-body">
+        <div class="message-meta">
+          <p><strong>From:</strong> <span id="msgModalFrom"></span></p>
+          <p><strong>Email:</strong> <span id="msgModalEmail"></span></p>
+          <p><strong>Subject:</strong> <span id="msgModalSubject"></span></p>
+          <p><strong>Date:</strong> <span id="msgModalDate"></span></p>
+        </div>
+        <hr class="modal-divider">
+        <div class="message-content">
+          <p><strong>Message:</strong></p>
+          <div class="message-text-box" id="msgModalContent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin JS Script -->
+  <script src="js/admin.js"></script>
+</body>
+</html>

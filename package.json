@@ -1,0 +1,19 @@
+{
+  "name": "arunagiri-portfolio",
+  "version": "1.0.0",
+  "description": "Premium Full Stack Personal Portfolio Website for Arunagiri S.",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "vercel": "vercel dev",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.5.0"
+  },
+  "devDependencies": {
+    "vercel": "^34.0.0"
+  }
+}

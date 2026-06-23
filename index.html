@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arunagiri S | ECE Student & Full Stack Developer</title>
+  <meta name="description" content="Personal Portfolio of Arunagiri S - Electronics and Communication Engineering Student, Full Stack Developer, and IoT Enthusiast. Check out my projects and certifications.">
+  <meta name="keywords" content="Arunagiri S, ECE, Electronics and Communication Engineering, Full Stack Developer, IoT, Embedded Systems, Portfolio, Vercel, MongoDB, CareLoop, Smart One Transportation">
+  <meta name="author" content="Arunagiri S">
+
+  <!-- Schema.org Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Arunagiri S",
+    "jobTitle": "Full Stack Developer & ECE Student",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Adhi College of Engineering and Technology",
+      "sameAs": "https://www.annauniv.edu/"
+    },
+    "knowsAbout": ["Electronics and Communication Engineering", "IoT", "Full Stack Development", "Embedded Systems", "React", "Node.js", "Firebase", "Flutter"]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-theme">
+  <!-- Custom Cursor Effect -->
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+  <div class="custom-cursor-ring" id="customCursorRing"></div>
+
+  <!-- Animated Particles Background -->
+  <canvas id="particlesCanvas"></canvas>
+
+  <!-- Preloader Screen -->
+  <div class="preloader-overlay" id="preloader">
+    <div class="preloader-container">
+      <div class="glow-ring">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="preloader-logo">
+        <h1 class="tech-text">&lt;AS /&gt;</h1>
+      </div>
+      <div class="preloader-text-wrapper">
+        <div class="preloader-typing" id="preloaderTyping">Initializing system...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-container">
+      <a href="#hero" class="logo tech-text">
+        <span>ARUNAGIRI</span><span class="gradient-text">.S</span>
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+          <li><a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a></li>
+          <li><a href="#skills" class="nav-link"><i class="fa-solid fa-code"></i> Skills</a></li>
+          <li><a href="#projects" class="nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a></li>
+          <li><a href="#timeline" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Journey</a></li>
+          <li><a href="#certifications" class="nav-link"><i class="fa-solid fa-certificate"></i> Credentials</a></li>
+          <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggleBtn" aria-label="Toggle Theme" class="action-btn">
+          <i class="fa-solid fa-moon theme-icon-dark"></i>
+          <i class="fa-solid fa-sun theme-icon-light"></i>
+        </button>
+        <a href="/admin" class="admin-login-btn action-btn" title="Admin Dashboard">
+          <i class="fa-solid fa-shield-halved"></i>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Menu Toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-background-gradient"></div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge-glow">ECE & Software Engineer</div>
+          <h1 class="hero-title">
+            Hi, I am <span class="gradient-text">Arunagiri S</span>
+          </h1>
+          <h2 class="hero-subtitle">
+            <span id="typingText" class="typing-text"></span><span class="typing-cursor">|</span>
+          </h2>
+          <p class="hero-description">
+            Bridging the gap between physical systems and digital platforms through full-stack development, IoT node design, and machine learning at the edge.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary btn-glow">
+              <span class="btn-text">Explore Projects</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#" id="heroResumeBtn" class="btn btn-secondary" target="_blank">
+              <span class="btn-text">Download Resume</span>
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <div class="hero-socials">
+            <a href="#" id="socialGithub" class="social-link" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="#" id="socialLinkedin" class="social-link" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#contact" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="hero-graphic">
+          <div class="cyber-circle-outer">
+            <div class="cyber-circle-inner">
+              <!-- Schematic SVG illustration to reflect ECE -->
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="ece-schematic">
+                <circle cx="100" cy="100" r="80" stroke="url(#cyan-purple-grad)" stroke-width="1.5" fill="none" stroke-dasharray="8 4" />
+                <circle cx="100" cy="100" r="60" stroke="var(--primary)" stroke-width="1" fill="none" opacity="0.5" />
+                <!-- Central Microcontroller chip graphic -->
+                <rect x="75" y="75" width="50" height="50" rx="4" fill="var(--card-bg)" stroke="url(#cyan-purple-grad)" stroke-width="2" class="ucontroller-core" />
+                <!-- Chip Pins -->
+                <line x1="70" y1="85" x2="75" y2="85" stroke="var(--accent)" stroke-width="2" />
+                <line x1="70" y1="95" x2="75" y2="95" stroke="var(--accent)" stroke-width="2" />
+                <line x1="70" y1="105" x2="75" y2="105" stroke="var(--accent)" stroke-width="2" />
+                <line x1="70" y1="115" x2="75" y2="115" stroke="var(--accent)" stroke-width="2" />
+                
+                <line x1="125" y1="85" x2="130" y2="85" stroke="var(--accent)" stroke-width="2" />
+                <line x1="125" y1="95" x2="130" y2="95" stroke="var(--accent)" stroke-width="2" />
+                <line x1="125" y1="105" x2="130" y2="105" stroke="var(--accent)" stroke-width="2" />
+                <line x1="125" y1="115" x2="130" y2="115" stroke="var(--accent)" stroke-width="2" />
+                
+                <line x1="85" y1="70" x2="85" y2="75" stroke="var(--accent)" stroke-width="2" />
+                <line x1="95" y1="70" x2="95" y2="75" stroke="var(--accent)" stroke-width="2" />
+                <line x1="105" y1="70" x2="105" y2="75" stroke="var(--accent)" stroke-width="2" />
+                <line x1="115" y1="70" x2="115" y2="75" stroke="var(--accent)" stroke-width="2" />
+                
+                <line x1="85" y1="125" x2="85" y2="130" stroke="var(--accent)" stroke-width="2" />
+                <line x1="95" y1="125" x2="95" y2="130" stroke="var(--accent)" stroke-width="2" />
+                <line x1="105" y1="125" x2="105" y2="130" stroke="var(--accent)" stroke-width="2" />
+                <line x1="115" y1="125" x2="115" y2="130" stroke="var(--accent)" stroke-width="2" />
+                
+                <!-- Circuit Tracks -->
+                <path d="M 60,100 L 75,100" stroke="var(--primary)" stroke-width="1.5" />
+                <path d="M 100,50 L 100,75" stroke="var(--primary)" stroke-width="1.5" />
+                <path d="M 125,100 L 150,100 L 160,110" stroke="var(--primary)" stroke-width="1.5" fill="none" />
+                <path d="M 95,125 L 95,150 L 80,165" stroke="var(--accent)" stroke-width="1.5" fill="none" />
+                
+                <!-- Nodes -->
+                <circle cx="60" cy="100" r="3" fill="var(--primary)" />
+                <circle cx="100" cy="50" r="3" fill="var(--primary)" />
+                <circle cx="160" cy="110" r="3" fill="var(--primary)" />
+                <circle cx="80" cy="165" r="3" fill="var(--accent)" />
+                
+                <defs>
+                  <linearGradient id="cyan-purple-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--accent)" />
+                    <stop offset="100%" stop-color="var(--primary)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section section-padding scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title"><i class="fa-solid fa-circle-info"></i> Discovery</span>
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+          <div class="header-bar"></div>
+        </div>
+        
+        <div class="about-grid">
+          <div class="about-details-panel glass-card">
+            <h3 class="panel-heading">Academic Profile</h3>
+            <div class="academic-cards-container">
+              <div class="academic-card">
+                <i class="fa-solid fa-graduation-cap card-icon"></i>
+                <div class="academic-info">
+                  <h4>Degree</h4>
+                  <p id="aboutDegree">BE Electronics & Communication Engineering</p>
+                </div>
+              </div>
+              <div class="academic-card">
+                <i class="fa-solid fa-school card-icon"></i>
+                <div class="academic-info">
+                  <h4>Institution</h4>
+                  <p id="aboutCollege">Adhi College of Engineering and Technology</p>
+                </div>
+              </div>
+              <div class="academic-card">
+                <i class="fa-solid fa-building-columns card-icon"></i>
+                <div class="academic-info">
+                  <h4>Affiliation</h4>
+                  <p id="aboutUniversity">Anna University</p>
+                </div>
+              </div>
+            </div>
+            
+            <p class="about-bio-text" id="aboutBio">
+              Loading biography details...
+            </p>
+          </div>
+          
+          <div class="about-stats-panel glass-card text-center">
+            <h3 class="panel-heading">Academic Rating</h3>
+            <div class="cgpa-ring-wrapper">
+              <svg class="cgpa-ring" viewBox="0 0 120 120">
+                <circle class="ring-bg" cx="60" cy="60" r="50" stroke-width="10" />
+                <circle class="ring-progress" id="cgpaRingProgress" cx="60" cy="60" r="50" stroke-width="10" stroke-dasharray="314.16" stroke-dashoffset="314.16" />
+              </svg>
+              <div class="cgpa-value">
+                <span id="cgpaText" class="tech-text">7.93</span>
+                <span class="cgpa-max">CGPA</span>
+              </div>
+            </div>
+            <div class="gpa-details">
+              <p class="text-muted">Targeting academic excellence and translating hardware knowledge into high-impact software solutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section section-padding scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title"><i class="fa-solid fa-microchip"></i> Expertise</span>
+          <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+          <div class="header-bar"></div>
+        </div>
+
+        <div class="skills-filter">
+          <button class="filter-btn active" data-category="All">All</button>
+          <button class="filter-btn" data-category="Frontend">Frontend</button>
+          <button class="filter-btn" data-category="Backend">Backend</button>
+          <button class="filter-btn" data-category="Database">Database & Cloud</button>
+          <button class="filter-btn" data-category="Languages">Languages</button>
+          <button class="filter-btn" data-category="Tools">Tools</button>
+        </div>
+
+        <div class="skills-grid" id="skillsGrid">
+          <!-- Dynamic Skill Cards are inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section section-padding scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title"><i class="fa-solid fa-code-fork"></i> Showcase</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <div class="header-bar"></div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Dynamic Project Cards are inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Timeline Section -->
+    <section id="timeline" class="timeline-section section-padding scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title"><i class="fa-solid fa-route"></i> Roadmap</span>
+          <h2 class="section-title">Education <span class="gradient-text">Timeline</span></h2>
+          <div class="header-bar"></div>
+        </div>
+
+        <div class="timeline-container" id="timelineContainer">
+          <div class="timeline-line"></div>
+          
+          <!-- BE ECE Timeline Card -->
+          <div class="timeline-item left-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2024 - 2028</span>
+              <h3>BE Electronics & Communication Engineering</h3>
+              <h4>Adhi College of Engineering and Technology</h4>
+              <p>Specializing in Embedded Systems, IoT, Digital Signal Processing, and Communication protocols. Actively involved in hardware prototyping and cloud integrations.</p>
+              <div class="timeline-tag">CGPA: 7.93</div>
+            </div>
+          </div>
+          
+          <!-- Higher Secondary Timeline Card -->
+          <div class="timeline-item right-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2022 - 2024</span>
+              <h3>Higher Secondary Education (HSC)</h3>
+              <h4>Computer Science & Mathematics Profile</h4>
+              <p>Learnt core foundations of physics, chemistry, advanced mathematics, and basic computer science languages.</p>
+            </div>
+          </div>
+
+          <!-- Secondary Timeline Card -->
+          <div class="timeline-item left-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2021 - 2022</span>
+              <h3>Secondary Education (SSLC)</h3>
+              <h4>General High School Curriculum</h4>
+              <p>Maintained consistent excellence across academics, mathematics, and extracurricular science exhibitions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications-section section-padding scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title"><i class="fa-solid fa-award"></i> Verification</span>
+          <h2 class="section-title">Certifications & <span class="gradient-text">Activities</span></h2>
+          <div class="header-bar"></div>
+        </div>
+
+        <div class="certifications-grid" id="certificationsGrid">
+          <!-- Dynamic Certifications are inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Counter Section -->
+    <section class="achievements-section section-padding">
+      <div class="container">
+        <div class="achievements-grid" id="achievementsCounters">
+          
+          <div class="achievement-card glass-card">
+            <div class="achievement-icon"><i class="fa-solid fa-folder-open"></i></div>
+            <h3 class="counter-number tech-text" data-target="8" id="counterProjects">0</h3>
+            <p>Projects Completed</p>
+          </div>
+
+          <div class="achievement-card glass-card">
+            <div class="achievement-icon"><i class="fa-solid fa-certificate"></i></div>
+            <h3 class="counter-number tech-text" data-target="7" id="counterCerts">0</h3>
+            <p>Certifications Earned</p>
+          </div>
+
+          <div class="achievement-card glass-card">
+            <div class="achievement-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3 class="counter-number tech-text" data-target="12" id="counterWorkshops">0</h3>
+            <p>Workshops Attended</p>
+          </div>
+
+          <div class="achievement-card glass-card">
+            <div class="achievement-icon"><i class="fa-solid fa-trophy"></i></div>
+            <h3 class="counter-number tech-text" data-target="4" id="counterHackathons">0</h3>
+            <p>Hackathons Participated</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-padding scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title"><i class="fa-solid fa-paper-plane"></i> Collaboration</span>
+          <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+          <div class="header-bar"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info-panel glass-card">
+            <h3>Let's discuss something great!</h3>
+            <p class="contact-intro-text">Have a project idea, internship requirement, or want to discuss IoT solutions? Shoot me a message!</p>
+            
+            <div class="info-details">
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="info-text">
+                  <h4>Email Me</h4>
+                  <a href="mailto:arunagiri.ece@gmail.com" id="contactEmailLink">arunagiri.ece@gmail.com</a>
+                </div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-text">
+                  <h4>Location</h4>
+                  <span>Tamil Nadu, India</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cyber-deco-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div class="contact-form-panel glass-card">
+            <form id="contactForm" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="formName">Your Name</label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" id="formName" required placeholder="Enter your name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="formEmail">Your Email</label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="formEmail" required placeholder="Enter your email">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="formSubject">Subject</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-pen-fancy input-icon"></i>
+                  <input type="text" id="formSubject" required placeholder="What is this about?">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="formMessage">Message</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-comment-dots input-icon alignment-top"></i>
+                  <textarea id="formMessage" rows="5" required placeholder="Write your message here..."></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-glow form-submit-btn">
+                <span class="btn-text">Send Message</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+              
+              <!-- Form Success/Error Alert -->
+              <div class="form-alert" id="formAlert"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-logo tech-text">
+        &lt;<span class="gradient-text">ARUNAGIRI S</span> /&gt;
+      </div>
+      <p class="footer-copy">&copy; 2026 Arunagiri S. All Rights Reserved. Built with Node.js, Vercel & MongoDB.</p>
+      <div class="footer-links">
+        <a href="#hero">Back to Top</a>
+        <span class="separator">|</span>
+        <a href="/admin">Admin Access</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
