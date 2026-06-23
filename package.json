@@ -2,7 +2,6 @@
   "name": "arunagiri-portfolio",
   "version": "1.0.0",
   "description": "Premium Full Stack Personal Portfolio Website for Arunagiri S.",
-  "main": "index.html",
   "scripts": {
     "start": "node server.js",
     "vercel": "vercel dev",
